@@ -85,7 +85,8 @@
                 [formGroup]="form1"
                 method="post"
                 action=" "
-                onSubmit="window.location.reload()"
+                (ngSubmit)="addingQuestion()"
+                
               >
                 <div class="form-group">
                   <div class="form-outline mb-4">
@@ -97,7 +98,7 @@
                       formControlName="course_id"
                     >
                       <option value="undefined" disabled selected>Select the course </option>
-                      <option value="101">Java</option>
+                      <option value="101" selected>Java</option>
                       <option value="102">Python</option>
                       <option value="103">.Net</option>
                       <option value="104">C</option>
@@ -242,16 +243,27 @@
                     <button
                       type="submit"
                       class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-                      (click)="addingQuestion()"
+                      
                     >
                       Add Question
                     </button>
-                  </div> <hr>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button style="margin-top: 5%;"
+                      (click)="rld()"
+                      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                      
+                    >
+                      Add Another Question
+                    </button>
+                  </div> 
+                   <hr>
+                   <h5>Select a file for mass Uploading of question</h5>
                   <div class="container">
                     <input  (change)="selectFile($event)" type="file" />
                     <button
                     (click)="uploadFile()"
-                    class="btn" mat-raised-button color="accent">Upload</button>
+                    class="btn btn-primary" mat-raised-button color="accent">Upload</button>
                 </div>
                 </div>
               </form>

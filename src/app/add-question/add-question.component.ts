@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { Question } from '../appmodel/question';
 import { AdminService } from '../service/admin.service';
 import Swal from 'sweetalert2';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 
 
 @Component({
@@ -47,7 +48,10 @@ export class AddQuestionComponent implements OnInit {
 
       }
     )
+    
+
   }
+ 
 
 //   sampleForm: FormGroup;
 //   @HostListener("window:beforeunload")
@@ -58,9 +62,11 @@ export class AddQuestionComponent implements OnInit {
 //  }
  
   addingQuestion(){
-    this.adminService.addquestion(this.addQuestion).subscribe(data =>{
+    
+    this.adminService.addquestion(this.addQuestion).subscribe((data =>{
       alert("hi");
-      console.log("Hi");
+      console.log(this.addQuestion);
+      console.log(data);
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -69,8 +75,38 @@ export class AddQuestionComponent implements OnInit {
         timer: 1500
       })
     
-     } );
+     } ));
+    
     }
+     rld(){
+      window.location.reload();
+     }
+
+    //  sample = [
+    //   {
+    //     name: "Test 1",
+    //     age: 13,
+    //     average: 8.2,
+    //     approved: true,
+    //     description: "using 'Content here, content here' "
+    //   },
+    //   {
+    //     name: 'Test 2',
+    //     age: 11,
+    //     average: 8.2,
+    //     approved: true,
+    //     description: "using 'Content here, content here' "
+    //   },
+    //   {
+    //     name: 'Test 4',
+    //     age: 10,
+    //     average: 8.2,
+    //     approved: true,
+    //     description: "using 'Content here, content here' "
+    //   },
+    // ];
+    //  new ngxCsv(this.sample,'My Report');
+    // new ngxCsv(datas, 'My Report');
 
       
      
