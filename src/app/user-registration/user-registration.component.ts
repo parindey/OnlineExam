@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Register } from '../appmodel/register';
 import { UserService } from '../user.service';
-// import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 
 
@@ -47,14 +47,28 @@ export class UserRegistrationComponent implements OnInit {
       // )
      console.log( response);
       if(response.status=="SUCCESS"){
-        alert(this.message);
+        Swal.fire({
+          position: 'top-right',
+          icon: 'success',
+          title: 'Successfully Registered User with name: ' + this.register.full_name,
+          showConfirmButton: false,
+          timer: 1500
+        })
 
         this.router.navigate(['user_login'])
       }
       else{
         this.message= response.message;
         // console.warn(this.message);
-        alert("this" + this.message);
+        // alert("this" + this.message);
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: this.message+' with this email',
+          showConfirmButton: false,
+          timer: 1500
+        })
+
       }
     })
   }

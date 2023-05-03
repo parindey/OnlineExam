@@ -48,7 +48,7 @@ export class ExamUIComponent implements OnInit, AfterViewInit {
     this.createUserRespObj();
   }
   //Timer
-  sec:any = 600;
+  sec:any;
   countDiv:any;
   min:any;
   remSec:any;
@@ -67,6 +67,7 @@ export class ExamUIComponent implements OnInit, AfterViewInit {
     this.questionsize = parseInt(JSON.parse(sessionStorage.getItem("questionsize")|| '{}'));
     this.userid=parseInt(JSON.parse(sessionStorage.getItem("userId")|| '{}'));
     console.log("Question number", this.questionsize)
+    this.sec=this.questionsize*10;
     this.exam.getQuestions(this.courseid,this.levelid, this.questionsize).subscribe(data=>{
       this.questions=data;
 

@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from '../appmodel/login';
 import { UserService } from '../user.service';
-// import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -35,13 +35,19 @@ export class UserLoginComponent implements OnInit {
     //   response.status,
     //   response.message
     // )
-    alert("logged in successfully");
+  
 
     console.log(response);
 
     if(response.status == 'SUCCESS') {​​​​
 
-
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Succesfully Logged In',
+        showConfirmButton: false,
+        timer: 1500
+      })
 
       sessionStorage.setItem('email',String(this.login.email) );
       sessionStorage.setItem('userId',response.userId );
@@ -51,7 +57,16 @@ export class UserLoginComponent implements OnInit {
     }​​​​
 
     else{
-      this.router.navigate(['user_registration']);
+
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Incorrect Username/Password ',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      this.ngOnInit();
+      // this.router.navigate(['user_login']);
       this.message = response.message;
     }
   }​​​​)

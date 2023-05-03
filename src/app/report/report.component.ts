@@ -18,6 +18,7 @@ import { NgForOf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ReportService } from '../service/report.service';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-report',
@@ -36,7 +37,7 @@ export class ReportComponent implements OnInit {
     
 
   }
-
+  
 
 }
 

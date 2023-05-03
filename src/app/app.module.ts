@@ -77,6 +77,7 @@ import { InstructionsComponent } from './instructions/instructions.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,7 +111,8 @@ import { InstructionsComponent } from './instructions/instructions.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

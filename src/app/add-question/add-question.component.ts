@@ -25,6 +25,8 @@ export class AddQuestionComponent implements OnInit {
   fileUploadUrl="http://localhost:8083/add/admin-restapi/question/upload";
   constructor(private http: HttpClient, private adminService: AdminService, private router: Router) { }
 
+
+
   ngOnInit() {
     this.form1 = new FormGroup(
       {
@@ -81,37 +83,96 @@ export class AddQuestionComponent implements OnInit {
      rld(){
       window.location.reload();
      }
-
-    //  sample = [
-    //   {
-    //     name: "Test 1",
-    //     age: 13,
-    //     average: 8.2,
-    //     approved: true,
-    //     description: "using 'Content here, content here' "
-    //   },
-    //   {
-    //     name: 'Test 2',
-    //     age: 11,
-    //     average: 8.2,
-    //     approved: true,
-    //     description: "using 'Content here, content here' "
-    //   },
-    //   {
-    //     name: 'Test 4',
-    //     age: 10,
-    //     average: 8.2,
-    //     approved: true,
-    //     description: "using 'Content here, content here' "
-    //   },
-    // ];
-    //  new ngxCsv(this.sample,'My Report');
-    // new ngxCsv(datas, 'My Report');
-
-      
+   
+     // sample file download code starts here
+    
+     sample:any = [
+      { 
+        question_id: "",
+        correct_option: "",
+        course_id: "",
+        level: "",
+        option_1: "",
+        option_2: "",
+        option_3: "",
+        option_4: "",
+        question: ""
+      },
+      { 
+        question_id:"",
+        correct_option: "",
+        course_id: "",
+        level: "",
+        option_1: "",
+        option_2:  "correct_option, options and question Should be strats with english alphabet ",
+        option_3: "",
+        option_4: "",
+        question: "",
+      },
+      {
+        question_id:"",
+        correct_option: "",
+        course_id: "",
+        level: "",
+        option_1: "",
+        option_2:  "question_id, level and course_id should be a number",
+        option_3: "",
+        option_4: "",
+        question: "",
+      },
+      {
+        question_id:"",
+        correct_option: "",
+        course_id: "Java(101),Python(102),.NET(103),C(104),Php(105),C++(106)",
+        level: "Easy(1),Medium(2),Hard(3)",
+        option_1: "",
+        option_2:  "",
+        option_3: "",
+        option_4: "",
+        question: "",
+      },
+      {
+        question_id: "",
+        correct_option: "",
+        course_id: "",
+        level: "",
+        option_1: "FOR EXAMPLE",
+        option_2: "",
+        option_3: "",
+        option_4: "",
+        question: ""
+      },
+      {
+        question_id: 1,
+        correct_option: "framework",
+        course_id: 101,
+        level: 1,
+        option_1: "Language",
+        option_2: "interface",
+        option_3: "verb",
+        option_4: "framework",
+        question: "What is collection in Java?",
+      }
+     
+    ];
+     
      
     
-
+  sampleFile(){
+    var options = { 
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: true, 
+      showTitle: true,
+      title: 'Sample Format of file to upload',
+      useBom: true,
+      noDownload: false,
+      headers: ["question_id", "correct_option", "course_id", "level","option_1", "option_2","option_3","option_4","question"]
+    };
+   
+   new ngxCsv(this.sample,"sample file", options);
+  }
   
 
 

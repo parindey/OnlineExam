@@ -19,7 +19,7 @@ import { ExamserService } from './examcom.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Examschedule } from '../examschedule';
-// import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-examcom',
@@ -45,12 +45,14 @@ export class ExamcomComponent implements OnInit {
     this.exam.levelid = parseInt(this.levelid);
     console.log("Questionsize"+this.questionsize);
     this.examservice.func(this.exam, this.questionsize).subscribe(data=> {
-      // Swal.fire({
-      //   icon: 'Registeration',
-      //   title: 'Secheduling Exam',
-      //   text: 'Successfully Registered',
-      //   footer: 'You have successfully registered, All the Best for your Preparation'
-      // })
+
+      Swal.fire({
+        position: 'top-right',
+        icon: 'success',
+        title: 'Exam Scheduled',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.router.navigate(['userDashboard']);
       })
     }
