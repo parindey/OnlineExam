@@ -1,7 +1,3 @@
-// 
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
@@ -9,6 +5,7 @@ import { Router } from '@angular/router';
 import { Login } from '../appmodel/login';
 import { UserService } from '../user.service';
 import Swal from 'sweetalert2';
+import { SignedService} from '../service/signed.service';
 
 
 @Component({
@@ -21,26 +18,63 @@ export class UserLoginComponent implements OnInit {
   form1  : any;
   login : Login = new Login();
   message: any;
-  constructor(private userService: UserService, private router: Router) {​​​​ }​​​
+  loginData={
+    username:'',
+    password:''
+  }
+  constructor(private userService: UserService, private router: Router, private sign: SignedService) {​​​​ }​​​
 
+  formSubmit(){
+    this.sign.generateToken(this.loginData).subscribe(
+      (data:any)=>{
+        if(data!=null){
+          localStorage.setItem('token',data.token);
+          this.loginCheck();
+        }
+        else {
+          Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Login Service Down!',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
+      },
+       (error:any)=>{
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Incorrect Username/Password ',
+          showConfirmButton: false,
+          timer: 2000
+        })
+       }
+    );
+  }
 
   logout() {
     sessionStorage.clear();
+    this.sign.signedOut();
   }
-  loginCheck() {​​​​
+
+  loginCheck() {
+
   console.log(this.login);
 
-  this.userService.login(this.login).subscribe(response => {​​​​
-    // Swal(
-    //   response.status,
-    //   response.message
-    // )
-  
-
+  this.userService.login(this.login).subscribe(response => {
     console.log(response);
-
-    if(response.status == 'SUCCESS') {​​​​
-
+    if(response==null){
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Login Service Down!',
+        showConfirmButton: false,
+        timer: 2000
+      })
+    }
+    else
+    if(response.status == 'SUCCESS') {
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -54,10 +88,8 @@ export class UserLoginComponent implements OnInit {
 
       this.router.navigate(['userDashboard']);
 
-    }​​​​
-
+    }
     else{
-
       Swal.fire({
         position: 'center',
         icon: 'error',
@@ -66,13 +98,10 @@ export class UserLoginComponent implements OnInit {
         timer: 2000
       })
       this.ngOnInit();
-      // this.router.navigate(['user_login']);
       this.message = response.message;
     }
-  }​​​​)
-
-}​​​​
-
+  })
+}
 
   ngOnInit() {
     this.form1 = new FormGroup (
@@ -86,7 +115,4 @@ export class UserLoginComponent implements OnInit {
   }
 
 }
-// function Swal(status: any, message: any) {
-//   throw new Error('Function not implemented.');
-// }
 

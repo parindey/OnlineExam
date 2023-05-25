@@ -29,22 +29,11 @@ export class UserRegistrationComponent implements OnInit {
     sessionStorage.clear();
   }
 
-  // func(e:any) {
-  //   if ( this.register.email !== '' || this.register.password !== '' || this.register.password !== '') {
-  //     e.preventDefault();
-  //     e.returnValue = '';
-  // }
-
-  // }
-
   registerUser() {
-	//debugger;
-    this.userService.registerUser(this.register).subscribe(response => {
-      // Swal
-      // (
-      //   response.status,
-      //   response.message
-      // )
+
+    if(this.register.email!=null && this.register.full_name!=null && this.register.city!=null && this.register.date_of_birth!=null && this.register.mobile!=null && this.register.password!=null && this.register.state!=null){
+      this.userService.registerUser(this.register).subscribe(response => {
+   
      console.log( response);
       if(response.status=="SUCCESS"){
         Swal.fire({
@@ -59,8 +48,6 @@ export class UserRegistrationComponent implements OnInit {
       }
       else{
         this.message= response.message;
-        // console.warn(this.message);
-        // alert("this" + this.message);
         Swal.fire({
           position: 'center',
           icon: 'warning',
@@ -71,6 +58,16 @@ export class UserRegistrationComponent implements OnInit {
 
       }
     })
+    }
+    else{
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Please fill all the details',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
   }
 
   sampleForm: any;
@@ -114,7 +111,4 @@ export class UserRegistrationComponent implements OnInit {
   }
 
 }
-// function Swal(status: any, message: any) {
-//   throw new Error('Function not implemented.');
-// }
 

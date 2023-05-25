@@ -54,33 +54,48 @@ export class AddQuestionComponent implements OnInit {
 
   }
  
-
-//   sampleForm: FormGroup;
-//   @HostListener("window:beforeunload")
-//  selloutcanDeactivate(): Observable<boolean> | boolean {
-//      return (
-//          !this.sampleForm.dirty
-//      );
-//  }
- 
   addingQuestion(){
-    
-    this.adminService.addquestion(this.addQuestion).subscribe((data =>{
-      alert("hi");
-      console.log(this.addQuestion);
+
+    if(this.addQuestion.correct_option!=null && this.addQuestion.levelId!=null && this.addQuestion.option_1
+      && this.addQuestion.option_2 && this.addQuestion.option_3 && this.addQuestion.option_4 && this.addQuestion.question!=null
+      && this.addQuestion.courseId){
+          this.adminService.addquestion(this.addQuestion).subscribe((data =>{
       console.log(data);
-      Swal.fire({
+      if(data==null){
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'Service Down!',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      }
+      else{
+        Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'data',
+        title: 'Question Added Successfully',
         showConfirmButton: false,
         timer: 1500
       })
-    
+      }
+
      } ));
+      }
+    else{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Please fill all details',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+    
     
     }
-     rld(){
+     
+    rld(){
       window.location.reload();
      }
    
@@ -192,9 +207,6 @@ export class AddQuestionComponent implements OnInit {
     formData.append("file",this.file);
  this.http.post(this.fileUploadUrl,formData).subscribe(
       (data=>{
-        
-        console.log(data);
-      
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -203,8 +215,6 @@ export class AddQuestionComponent implements OnInit {
           timer: 1500
         })
       }
-
-
         )
     )
 

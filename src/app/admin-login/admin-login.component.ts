@@ -1,19 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-admin-login',
-//   templateUrl: './admin-login.component.html',
-//   styleUrls: ['./admin-login.component.css']
-// })
-// export class AdminLoginComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
-
 import { Component, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -39,7 +23,17 @@ export class AdminLoginComponent implements OnInit {
   console.log(this.adminlogin);
 
   this.adminService.login(this.adminlogin).subscribe(response => {
-    // alert("hiiiii")
+    if(response==null){
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Service Down!',
+        showConfirmButton: false,
+        timer: 2000
+      })
+    }
+    else
+    if(response.status=="SUCCESS"){
     Swal.fire({
       position: 'top-right',
       icon: 'success',
@@ -47,17 +41,16 @@ export class AdminLoginComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     })
-    ​​​​
-
-    // Swal(
-    //   response.status,
-    //   response.message
-    // )
-    // swal({
-    //   content: component.location.nativeElement
-    // }).then(() => {
-    //   component.destroy();
-    // });
+    }
+    else{
+      Swal.fire({
+        position: 'top-right',
+        icon: 'error',
+        title: 'Wrong Credentials',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
 
     console.log(response);
 
@@ -92,8 +85,3 @@ export class AdminLoginComponent implements OnInit {
   }
 
 }
-
-// function Swal(status: any, message: any) {
-//   throw new Error('Function not implemented.');
-// }
-

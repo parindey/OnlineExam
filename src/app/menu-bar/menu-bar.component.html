@@ -1,27 +1,21 @@
-<!-- <p>menu-bar works!</p>
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />          
 
-
-<div class="sticky-top topnav navbar-dark navbar ">
-    <a href="#" class="navbar-brand left " >Home</a>
-    <a href="admin_login"  *ngIf="sessionUser==null && sessionAdmin==null" >Admin</a>
-    <a href="admin_dashboard" *ngIf="sessionUser==null && sessionAdmin!=null" >Admin</a>
-    <a href="userDashboard"  *ngIf="sessionUser!=null">User Dashboard</a>
-    <a href="user_registration"   *ngIf="sessionAdmin==null && sessionUser==null"  > User Register</a>
-    <a href="aboutUs" class="mr-auto" >About us</a>
-    <a href="user_login"  *ngIf="sessionUser==null && sessionAdmin==null">User Login</a>
-    <a href="#" (click)="logout()"  *ngIf="sessionUser!=null || sessionAdmin!=null" >Logout</a>
-    
-  </div> -->
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div class="sticky-top topnav navbar-dark navbar ">
-    <a href="#" class="navbar-brand left " >Home</a>
-    <a href="admin_login"  *ngIf="sessionUser==null && sessionAdmin==null" >Admin Login</a>
-    <a href="admin_dashboard" *ngIf="sessionUser==null && sessionAdmin!=null" >Admin</a>
-    <a href="userDashboard"  *ngIf="sessionUser!=null">User Dashboard</a>
-    <a href="user_registration"   *ngIf="sessionAdmin==null && sessionUser==null"  > User Register</a>
-    <a href="aboutUs" class="mr-auto" >About Us</a>
-    <a href="user_login"  *ngIf="sessionUser==null && sessionAdmin==null">User Login</a>
-    <a href="#" (click)="logout()"  *ngIf="sessionUser!=null || sessionAdmin!=null" >Logout</a>
+    <a routerLink="" class="navbar-brand  " ><h5 class="hover-underline-animation">Home</h5></a>
+    <a routerLink="/admin_login" *ngIf="sessionUser==null && sessionAdmin==null" ><h5 class="hover-underline-animation">Admin Login</h5></a>
+    <a routerLink="/admin_dashboard" class="mr-auto" *ngIf="sessionUser==null && sessionAdmin!=null" ><h5 class="hover-underline-animation">Dashboard</h5></a>
+    <a routerLink="/userDashboard"  *ngIf="sessionUser!=null"><h5 class="hover-underline-animation">Dashboard</h5></a>
+    <a routerLink="/user_registration"   *ngIf="sessionAdmin==null && sessionUser==null"  > <h5 class="hover-underline-animation">Sign Up</h5></a>
+    <a routerLink="/aboutUs" class="mr-auto" *ngIf="sessionAdmin==null"><h5 class="hover-underline-animation">Help <i class="fa fa-question-circle"></i></h5></a>
+
+    <a routerLink="/chatbot" class='fa-solid fa-message' style='font-size:36px;'></a>
+    <a routerLink="/user_login"  *ngIf="sessionUser==null && sessionAdmin==null"><h5 class="hover-underline-animation">Sign In</h5></a>
+    <a routerLink="/profile"  *ngIf="sessionUser!=null"><i class="fa fa-user-circle-o" style="font-size:40px;color:rgba(217, 255, 0, 0.925)"></i></a>
+    <a routerLink="" (click)="logout()"  *ngIf="sessionUser!=null || sessionAdmin!=null" ><h5 class="hover-underline-animation">Logout</h5></a>
     
   </div>
 

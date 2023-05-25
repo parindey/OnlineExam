@@ -1,20 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-exam-ui',
-//   templateUrl: './exam-ui.component.html',
-//   styleUrls: ['./exam-ui.component.css']
-// })
-// export class ExamUiComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
-
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from '../appmodel/question';
@@ -47,17 +30,14 @@ export class ExamUIComponent implements OnInit, AfterViewInit {
     this.length=this.questions.length;
     this.createUserRespObj();
   }
-  //Timer
+
   sec:any;
   countDiv:any;
   min:any;
   remSec:any;
 
 
-  ngOnInit() {
-    // this.courseid = parseInt(this.routecourse.snapshot.params.courseId);
-  //  alert("Course ID" + typeof(this.courseid))
-  }
+  ngOnInit() {}
 
 
   constructor(private exam : ExamService,private router:Router, private routecourse : ActivatedRoute) {

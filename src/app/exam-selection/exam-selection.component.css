@@ -54,25 +54,16 @@ body {
   }
  */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  .bor{
     border-color: black;
     border-radius: 10%;
    }
   
+   .bg{
+    background-image: url('../../assets/images/white-question.webp');
+    background-repeat: no-repeat;
+    background-size: 112%;
+   }
+   .ml-20{
+    margin-left: 45%;
+   }

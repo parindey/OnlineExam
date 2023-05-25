@@ -1,24 +1,9 @@
-// import { Component, OnInit } from '@angular/core';
 
-// @Component({
-//   selector: 'app-remove-question',
-//   templateUrl: './remove-question.component.html',
-//   styleUrls: ['./remove-question.component.css']
-// })
-// export class RemoveQuestionComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
 
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from '../service/admin.service';
-// import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { ExamService } from '../service/exam.service';
 import { Question } from '../appmodel/question';
 
@@ -55,12 +40,8 @@ export class RemoveQuestionComponent implements OnInit {
 
   removingQuestion(question_id:any){
     this.adminService.removequestion(question_id).subscribe(response =>{
-      // Swal.fire(
-      //   'Question Removed!'
-      // )
     })
-    location.reload();
-
+    this.searchQuestion();
   }
 }
 

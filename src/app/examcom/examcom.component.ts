@@ -43,6 +43,7 @@ export class ExamcomComponent implements OnInit {
     console.log("CourseId"+this.courseid);
     this.exam.courseid = this.courseid;
     this.exam.levelid = parseInt(this.levelid);
+    this.questionsize=10;
     console.log("Questionsize"+this.questionsize);
     this.examservice.func(this.exam, this.questionsize).subscribe(data=> {
 

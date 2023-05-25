@@ -23,17 +23,17 @@ export class AdminService {
 
   addquestion(addquestion: Question) : Observable<any> {
     
-    let url = "http://localhost:8083/add/admin-restapi/add_question";
+    let url = "http://localhost:8054/add/admin-restapi/add_question";
     return this.http.post(url, addquestion);
   }
 
   removequestion(questionid: number): Observable<any>{
-    let url = "http://localhost:8083/add/admin-restapi/remove_question/"+questionid;
+    let url = "http://localhost:8054/add/admin-restapi/remove_question/"+questionid;
    return this.http.delete(url);
   }
 
   login(login:Login):Observable<any> {
-    let url="http://localhost:8080/auth/admin-restapi/admin_login";
+    let url="http://localhost:8054/auth/admin-restapi/admin_login";
     return this.http.post(url, login);
   }
 }

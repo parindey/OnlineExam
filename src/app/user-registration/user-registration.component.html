@@ -7,7 +7,6 @@
   <div class="content">
      <img src="assets\images\images.png" />
           <h1 class="form-title">Register Here</h1>
-          
                         <form [formGroup]="regform" (ngSubmit)="registerUser()">
                           <div class="form-group">
                             <div class="form-outline mb-4">
@@ -194,12 +193,15 @@
           
                             <div class="form-outline mb-4">
                               <input
-                                type="date"
+                                type="text"
+                                onfocus="(this.type='date')"
+                                onblur="(this.type='text')"
                                 value="Dob"
                                 name="date_of_birth"
                                 [(ngModel)]="register.date_of_birth"
                                 class="form-control form-control-lg"
                                 formControlName="date_of_birth"
+                                placeholder="Enter Date of Birth"
                               />
                             </div>
                             <div *ngIf="regform.get('date_of_birth').touched">
@@ -259,6 +261,7 @@
                               >
                                 Register
                               </button>
+                              <a class="ml-20" routerLink="/user_login"><h5 class="hover-underline-animation">Already Have an account!</h5></a>
                             </div>
                           </div>
   </form>

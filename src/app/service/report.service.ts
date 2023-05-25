@@ -20,7 +20,7 @@ export class ReportService {
   constructor(private http: HttpClient) { }
 
   report(userid:any) : Observable<any> {
-    let url = "http://localhost:8082/report/user-restapi/report/"+userid;
+    let url = "http://localhost:8054/report/user-restapi/report/"+userid;
    return this.http.get<Report[]>(url);
   }
 }

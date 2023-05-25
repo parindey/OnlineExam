@@ -1,13 +1,3 @@
-// import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ExamcomService {
-
-//   constructor() { }
-// }
-
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
@@ -18,11 +8,11 @@ import { Examschedule } from '../examschedule';
   providedIn: 'root'
 })
 export class ExamserService {
-  private url:string= "http://localhost:8084/schedule/examschedule/";
+  private url:string= "http://localhost:8054/schedule/examschedule/";
   constructor(private http:HttpClient) {}
 
    func(exam:Examschedule, questionsize: number):Observable<any>{
-    this.url= "http://localhost:8084/schedule/examschedule/" + questionsize;
+    this.url= "http://localhost:8054/schedule/examschedule/" + questionsize;
    return this.http.post<any>(this.url,exam);
    }
 }

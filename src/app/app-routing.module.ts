@@ -69,11 +69,13 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { ReportComponent } from './report/report.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { ExamcomComponent } from './examcom/examcom.component';
+import { ProfileComponent } from './profile/profile.component';
 // import { SampleChangesGuard } from './sample-changes-guard'
 // import {SampleComponentCanDeactivate} from './sample-component-can-deactivate'
 // import { DeactivateGuard } from './deactivate-guard';
 import { CandidateExamLoginComponent } from './candidate-exam-login/candidate-exam-login.component';
 import { ExamUIComponent } from './exam-ui/exam-ui.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'user_registration' ,component:UserRegistrationComponent},
@@ -91,7 +93,9 @@ const routes: Routes = [
   {path:'user_report', component:ReportComponent},
   {path:'exam_instructions/:courseId/:levelId',component:InstructionsComponent},
   {path:'register', component:ExamcomComponent},
-  {path:'candidate_exam_login/:courseId/:levelId/:questionsize', component:CandidateExamLoginComponent}
+  {path:'candidate_exam_login/:courseId/:levelId/:questionsize', component:CandidateExamLoginComponent},
+  {path:'profile', component:ProfileComponent},
+  {path: 'chatbot', component:ChatbotComponent}
 ];
 
 @NgModule({

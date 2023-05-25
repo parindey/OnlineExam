@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   constructor(private router:Router) { }
+  sessionUser : any = sessionStorage.getItem("userId");
+  sessionAdmin : any = sessionStorage.getItem("adminId");
 
   ngOnInit(): void {
   }
